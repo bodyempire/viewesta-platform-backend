@@ -91,8 +91,7 @@ Base URL: `http://localhost:3000/api/v1`
 ## Health Check
 | Method | Endpoint |
 |--------|----------|
-| GET | `/health` |
-
+| GET | `/health` | 
 ---
 
 All protected routes require `Authorization: Bearer <token>`.
