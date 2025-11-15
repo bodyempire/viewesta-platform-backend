@@ -35,6 +35,10 @@ class MoviePricing {
     return result.rows[0] || null;
   }
 
+  static async findByMovieAndQuality(movieId, quality) {
+    return await this.getPrice(movieId, quality);
+  }
+
   static async update(movieId, quality, data) {
     const result = await query(
       `UPDATE movie_pricing SET price = $1, is_free = $2, updated_at = CURRENT_TIMESTAMP

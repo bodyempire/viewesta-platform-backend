@@ -88,6 +88,40 @@ Base URL: `http://localhost:3000/api/v1`
 | DELETE | `/watch-history/:movieId` |
 
 ---
+## Wallet
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/wallet` | Get wallet balance (auth) |
+| POST | `/wallet/topup` | Top up wallet (auth) |
+| GET | `/wallet/transactions` | Get transaction history (auth) |
+| PUT | `/wallet/currency` | Update wallet currency (auth) |
+
+---
+## Payments
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/payments/purchase` | Purchase movie (TVOD) (auth) |
+| POST | `/payments/verify` | Verify payment transaction (auth) |
+| GET | `/payments/purchases` | Get my purchases (auth) |
+
+---
+## Subscriptions
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/subscriptions/plans` | Get subscription plans (public) |
+| POST | `/subscriptions/subscribe` | Subscribe to plan (auth) |
+| GET | `/subscriptions/me` | Get my subscription (auth) |
+| PUT | `/subscriptions/:subscription_id/cancel` | Cancel subscription (auth) |
+| PUT | `/subscriptions/:subscription_id/auto-renew` | Update auto-renew setting (auth) |
+
+---
+## Webhooks
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/webhooks/flutterwave` | Flutterwave payment webhook |
+| POST | `/webhooks/stripe` | Stripe payment webhook |
+
+---
 ## Health Check
 | Method | Endpoint |
 |--------|----------|

@@ -16,6 +16,10 @@ import categoryRoutes from './routes/categoryRoutes.js';
 import watchlistRoutes from './routes/watchlistRoutes.js';
 import favoritesRoutes from './routes/favoritesRoutes.js';
 import watchHistoryRoutes from './routes/watchHistoryRoutes.js';
+import walletRoutes from './routes/walletRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
+import subscriptionRoutes from './routes/subscriptionRoutes.js';
+import webhookRoutes from './routes/webhookRoutes.js';
 
 // Import middleware
 import { errorHandler } from './middleware/errorHandler.js';
@@ -43,6 +47,9 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
+// Webhook routes need raw body - register before JSON parser
+app.use(`/api/${API_VERSION}/webhooks`, webhookRoutes);
+
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
@@ -64,6 +71,9 @@ app.use(`/api/${API_VERSION}/categories`, categoryRoutes);
 app.use(`/api/${API_VERSION}/watchlist`, watchlistRoutes);
 app.use(`/api/${API_VERSION}/favorites`, favoritesRoutes);
 app.use(`/api/${API_VERSION}/watch-history`, watchHistoryRoutes);
+app.use(`/api/${API_VERSION}/wallet`, walletRoutes);
+app.use(`/api/${API_VERSION}/payments`, paymentRoutes);
+app.use(`/api/${API_VERSION}/subscriptions`, subscriptionRoutes);
 
 // Root route
 app.get('/', (req, res) => {
